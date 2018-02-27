@@ -6,8 +6,10 @@ import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+import './style/style.css';
 import SongList from './components/SongList';
 import SongCreate from './components/SongCreate';
+import SongDetail from './components/SongDetail';
 
 const client = new ApolloClient({
   link: new HttpLink(),
@@ -21,6 +23,7 @@ const Root = () => {
         <div className="container">
           <Route exact path="/" component={SongList} />
           <Route path="/songs/new" component={SongCreate} />
+          <Route path="/songs/:id" component={SongDetail} />
         </div>
       </HashRouter>
     </ApolloProvider>
