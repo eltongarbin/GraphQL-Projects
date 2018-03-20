@@ -10,7 +10,10 @@ import App from './components/App';
 
 const client = new ApolloClient({
   dataIdFromObject: (o) => o.id,
-  link: new HttpLink(),
+  link: new HttpLink({
+    uri: '/graphql',
+    credentials: 'same-origin'
+  }),
   cache: new InMemoryCache()
 });
 
