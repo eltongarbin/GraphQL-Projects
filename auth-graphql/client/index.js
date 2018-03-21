@@ -8,6 +8,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import Header from './components/Header';
 import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 
 const client = new ApolloClient({
   dataIdFromObject: (o) => o.id,
@@ -26,6 +27,7 @@ const Root = () => {
           <Header />
           <Route exact path="/" render={() => <div />} />
           <Route path="/login" component={LoginForm} />
+          <Route path="/signup" component={SignupForm} />
         </div>
       </HashRouter>
     </ApolloProvider>
