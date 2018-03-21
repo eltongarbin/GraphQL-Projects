@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import App from './components/App';
+import Header from './components/Header';
+import LoginForm from './components/LoginForm';
 
 const client = new ApolloClient({
   dataIdFromObject: (o) => o.id,
@@ -21,7 +22,11 @@ const Root = () => {
   return (
     <ApolloProvider client={client}>
       <HashRouter>
-        <Route exact path="/" component={App} />
+        <div className="container">
+          <Header />
+          <Route exact path="/" render={() => <div />} />
+          <Route path="/login" component={LoginForm} />
+        </div>
       </HashRouter>
     </ApolloProvider>
   );
