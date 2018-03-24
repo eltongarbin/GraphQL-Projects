@@ -10,6 +10,7 @@ import Header from './components/Header';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
+import requireAuth from './components/requireAuth';
 
 const client = new ApolloClient({
   dataIdFromObject: (o) => o.id,
@@ -29,7 +30,7 @@ const Root = () => {
           <Route exact path="/" render={() => <div />} />
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={requireAuth(Dashboard)} />
         </div>
       </HashRouter>
     </ApolloProvider>
